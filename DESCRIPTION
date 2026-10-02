@@ -1,6 +1,6 @@
 Package: glmmpa
 Title: Power Approximation for Generalized Linear Mixed Models
-Version: 0.1.0
+Version: 1.0.0
 Authors@R: 
     c(person("Carlie", "Prinster", email = "prinstercarlie@gmail.com", 
      role = c("aut", "cre"), comment = c(ORCID = "0009-0009-6392-9750")),
