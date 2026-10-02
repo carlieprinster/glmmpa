@@ -1,15 +1,15 @@
-Package: glmpa
+Package: glmmpa
 Title: Power Approximation for Generalized Linear Mixed Models
 Version: 0.1.0
 Authors@R: 
     c(person("Carlie", "Prinster", email = "prinstercarlie@gmail.com", 
-     role = c("aut", "cre"), comment = c(ORCID = "YOUR-ORCID-ID")),
+     role = c("aut", "cre"), comment = c(ORCID = "0009-0009-6392-9750")),
       person("John", "Stevens", role = c("aut"), 
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           comment = c(ORCID = "0000-0002-2908-7918"))
       )
 Description: Functions to approximate power of generalized linear mixed
-    models using the probability distribution method (PDM), via the blme
-    or glmmTMB packages to fix random variance components.
+    models using the probability distribution method (PDM), via the 'blme'
+    or 'glmmTMB' packages to fix random variance components.
 Imports: glmmTMB, 
           blme, 
           emmeans,
@@ -23,4 +23,10 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-
+Suggests: 
+    testthat (>= 3.0.0),
+    tidyr,
+    pbkrtest
+Config/testthat/edition: 3
+URL: https://github.com/carlieprinster/glmmpa
+BugReports: https://github.com/carlieprinster/glmmpa/issues
