@@ -18,12 +18,12 @@ knitr::opts_chunk$set(
 
 
 
-# glmpa
+# glmmpa
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of glmpa is to approximate power of generalized linear mixed models using the probability distribution method (PDM).  
+The goal of glmpma is to approximate power of generalized linear mixed models using the probability distribution method (PDM).  
 
 This goal can be achieved using this package, as it includes two functions that do this. 
 
@@ -45,14 +45,19 @@ The functions using the blme package builds on earlier work to approximate power
 
 ## Installation
 
-You can install the development version of glmpa like so:
+You can install the development version of glmmpa by the following: 
 
 ```{r}
 library("devtools") 
-install_github("carlieprinster/R-Power-Approximation")  
-library(glmpa)
-library(glmmTMB)
-library(emmeans)
+install_github("carlieprinster/glmmpa")  
+library(glmmpa)
+```
+
+
+You can install the CRAN version of glmmpa by the following:
+```{r}
+install.packages("glmmpa")  
+library(glmmpa)
 ```
 
 ## Example 

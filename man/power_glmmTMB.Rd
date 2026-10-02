@@ -22,5 +22,29 @@ A data frame of power approximations per fixed effect.
 Approximate power for a mixed model using glmmTMB
 }
 \examples{
-# see vignette for full example
+
+#define dataset
+Thatch <- as.factor(c(rep(2, 16), rep(5, 16), rep(8, 16)))
+NSource <- rep(c(rep("AmmSulph", 4), rep("IBDU", 4), rep("SCUrea", 4), rep("Urea", 4)), 3)
+estY <- c(rep(6, 12), rep(4, 4), rep(c(rep(6, 4), rep(7, 4), rep(8, 4), rep(5, 4)), 2))
+Field <- as.factor(rep(1:4, 12))
+ex_gaussian <- cbind.data.frame(Thatch, NSource, estY, Field)
+
+#define fixed random variance components
+start = list(theta = log(c(sqrt(0.008), sqrt(0.07))), betadisp = log(sqrt(0.2)))
+map = list(theta = factor(c(NA, NA)), betadisp = factor(NA))
+
+#model fit
+ex_gaussianmodel <-
+ glmmTMB::glmmTMB(estY ~ NSource * Thatch + (1 | Field) + (1 | Field:NSource),
+          data = ex_gaussian,
+          family = gaussian(),
+          control = glmmTMB::glmmTMBControl(optimizer = optim,
+          optArgs = list(method = "BFGS")),
+          start = start,
+          map = map)
+
+#run function
+power_glmmTMB(ex_gaussianmodel, "NSource:Thatch", 0.05, ex_gaussian)
+
 }

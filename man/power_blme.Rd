@@ -51,8 +51,22 @@ power_blme(
 A data frame of power approximations per fixed effect.
 }
 \description{
-A short description...
+Approximate power for a mixed model using blme
 }
 \examples{
-# see vignette for full example#'
+
+#define dataset
+Thatch <- as.factor(c(rep(2, 16), rep(5, 16), rep(8, 16)))
+NSource <- rep(c(rep("AmmSulph", 4), rep("IBDU", 4), rep("SCUrea", 4), rep("Urea", 4)), 3)
+estY <- c(rep(6, 12), rep(4, 4), rep(c(rep(6, 4), rep(7, 4), rep(8, 4), rep(5, 4)), 2))
+Field <- as.factor(rep(1:4, 12))
+ex_gaussian <- cbind.data.frame(Thatch, NSource, estY, Field)
+
+#run function
+power_blme(Formula = estY ~ NSource*Thatch + (1 | Field) + (1|Field:NSource),
+ Varcomp = c(0.008, 0.07),
+ Resid_var = 0.2, Data = ex_gaussian,
+ Family = "gaussian", Random_Effects = c("Field", "Field:NSource"),
+ Fixed_Effects =c("NSource:Thatch"),
+ Alpha = 0.05)
 }
