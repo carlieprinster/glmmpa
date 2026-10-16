@@ -45,7 +45,7 @@
 
 
 power_blme <- function(Formula, Varcomp, Data, Expanded_Data = NULL, Family, Fixed_Effects = NULL, Random_Effects = NULL, Alpha,
-                       Resid_var = NULL, tol = 1e-6, Optimizer = "nloptwrap", OptCtrl = list(maxeval = 2e5), NAGQ0initStep = 0) {
+                       Resid_var = NULL, tol = 1e-6, Optimizer = "bobyqa", OptCtrl = list(maxeval = 2e5), NAGQ0initStep = 0) {
 
 
 
