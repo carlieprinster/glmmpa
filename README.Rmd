@@ -84,10 +84,8 @@ ex_gaussian <- cbind.data.frame(Thatch, NSource, estY, Field)
 One can implement the function by defining the following as arguments: model formula, the values of the random variance components, the previously created data frame, the model distribution family, the names of the fixed effects of power approximation interest, and the names of the random variance components. All other arguments have default values that can be customized as users need. 
 
 ```{r example blme}
-
-gaussian_example <-  power_blme(Formula = estY ~ NSource*Thatch + (1 | Field) + (1|Field:NSource), 
-                                  Varcomp = c(0.008, 0.07), Resid_var = 0.2, Data = ex_gaussian,
-                                  Family = "gaussian", Random_Effects = c("Field", "Field:NSource"), Fixed_Effects =c("NSource", "NSource:Thatch", "Thatch"), Alpha = 0.05)
+gaussian_example <-  power_blme(Formula = estY ~ NSource*Thatch + (1 | Field) + (1|Field:NSource), Varcomp = c(0.008, 0.07), Resid_var = 0.2, Data = ex_gaussian, 
+Family = "gaussian", Random_Effects = c("Field", "Field:NSource"), Fixed_Effects =c("NSource", "NSource:Thatch", "Thatch"), Alpha = 0.05)
 
 ```
 

@@ -7,7 +7,7 @@ Authors@R:
       person("John", "Stevens", role = c("aut"), 
            comment = c(ORCID = "0000-0002-2908-7918"))
       )
-Description: Functions to approximate power of generalized linear mixed
+Description: Power approximation of generalized linear mixed
     models using the probability distribution method (PDM), via the 'blme'
     or 'glmmTMB' packages to fix random variance components.
 Imports: glmmTMB, 

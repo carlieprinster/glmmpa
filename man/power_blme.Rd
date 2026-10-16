@@ -15,7 +15,7 @@ power_blme(
   Alpha,
   Resid_var = NULL,
   tol = 1e-06,
-  Optimizer = "nloptwrap",
+  Optimizer = "bobyqa",
   OptCtrl = list(maxeval = 2e+05),
   NAGQ0initStep = 0
 )
