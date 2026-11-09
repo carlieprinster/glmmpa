@@ -63,7 +63,7 @@ power_glmmTMB <- function(model, terms, alpha = 0.05, Data) {
   colnames(power_mat_t) <-terms
   rownames(power_mat_t) <- "Power Approximation"
 
-  print(power_mat_t)
+  return(power_mat_t)
 
 }
 

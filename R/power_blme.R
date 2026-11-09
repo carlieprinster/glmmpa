@@ -273,7 +273,7 @@ power_blme <- function(Formula, Varcomp, Data, Expanded_Data = NULL, Family, Fix
 
   colnames(power_mat) <- Fixed_Effects
   rownames(power_mat) <- "Power Approximation"
-  print(power_mat)
+  return(power_mat)
 
 }
 
