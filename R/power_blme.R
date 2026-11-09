@@ -2,7 +2,7 @@
 #'
 #' @importFrom blme blmer bglmer
 #' @importFrom stats qf pf update as.formula anova
-#' @importFrom lme4 glmerControl
+#' @importFrom lme4 glmerControl lmerControl
 #' @import emmeans
 
 #'
@@ -16,8 +16,8 @@
 #' @param Fixed_Effects Character vector of fixed effect names.
 #' @param Alpha Significance level, default 0.05.
 #' @param tol Standard deviation of the sharp prior distributions, default 1e-6.
-#' @param Optimizer Optimizer for the blme model fit, default 'nloptwrap'.
-#' @param OptCtrl Additional optimization controls, default list(maxeval = 2e5)
+#' @param Optimizer Optimizer for the blme model fit, default 'nlminbwrap'.
+#' @param OptCtrl Additional optimization controls, default list(iter.max = 1e4, eval.max = 1e4)
 #' @param NAGQ0initStep Additional optimization controls, default 0.
 #'
 #' @return A data frame of power approximations per fixed effect.
@@ -38,14 +38,12 @@
 #'  Fixed_Effects =c("NSource:Thatch"),
 #'  Alpha = 0.05)
 
-
-
 #' @export
 
 
 
 power_blme <- function(Formula, Varcomp, Data, Expanded_Data = NULL, Family, Fixed_Effects = NULL, Random_Effects = NULL, Alpha,
-                       Resid_var = NULL, tol = 1e-6, Optimizer = "bobyqa", OptCtrl = list(maxeval = 2e5), NAGQ0initStep = 0) {
+                       Resid_var = NULL, tol = 1e-6, Optimizer = "nlminbwrap", OptCtrl = list(iter.max = 1e4, eval.max = 1e4), NAGQ0initStep = 0) {
 
 
 
@@ -97,11 +95,13 @@ power_blme <- function(Formula, Varcomp, Data, Expanded_Data = NULL, Family, Fix
   if (Family == "gaussian") {
     if (length(new_random_effects > 1)) {
       b2 <- blme::blmer(Formula, data = Data,
+                        control = lmerControl(optimizer = Optimizer, optCtrl = OptCtrl),
                         resid.prior = point(sqrt(Resid_var_TEMP_notlikely)),
                         cov.prior = form_list)
 
     } else {
       b2 <- blme::blmer(Formula, data = Data,
+                        control = lmerControl(optimizer = Optimizer, optCtrl = OptCtrl),
                         resid.prior = point(sqrt(Resid_var_TEMP_notlikely)),
                         cov.prior = new_random_effects ~ custom(custom_prior1,
                                                                 chol = TRUE,

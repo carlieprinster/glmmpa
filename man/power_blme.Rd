@@ -15,8 +15,8 @@ power_blme(
   Alpha,
   Resid_var = NULL,
   tol = 1e-06,
-  Optimizer = "nloptwrap",
-  OptCtrl = list(maxeval = 2e+05),
+  Optimizer = "nlminbwrap",
+  OptCtrl = list(iter.max = 10000, eval.max = 10000),
   NAGQ0initStep = 0
 )
 }
@@ -41,9 +41,9 @@ power_blme(
 
 \item{tol}{Standard deviation of the sharp prior distributions, default 1e-6.}
 
-\item{Optimizer}{Optimizer for the blme model fit, default 'nloptwrap'.}
+\item{Optimizer}{Optimizer for the blme model fit, default 'nlminbwrap'.}
 
-\item{OptCtrl}{Additional optimization controls, default list(maxeval = 2e5)}
+\item{OptCtrl}{Additional optimization controls, default list(iter.max = 1e4, eval.max = 1e4)}
 
 \item{NAGQ0initStep}{Additional optimization controls, default 0.}
 }

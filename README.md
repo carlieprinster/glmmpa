@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# glmpa
+# glmmpa
 
 <!-- badges: start -->
 
@@ -57,7 +57,7 @@ install_github("carlieprinster/R-Power-Approximation")
 #> ─  building 'glmpa_0.1.0.tar.gz'
 #>      
 #> 
-library(glmpa)
+library(glmmpa)
 library(glmmTMB)
 library(emmeans)
 ```
