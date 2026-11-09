@@ -98,6 +98,7 @@ gaussian_example <-  power_blme(Formula = estY ~ NSource*Thatch + (1 | Field) + 
 
 One can implement the other function by first defining a model within the glmmTMB package framework and defining the start and map arguments with the fixed random variance components. Then, the user must define the following: a glmmTMB model, the name of the fixed effect of power approximation interest, and the model dataset. The last argument, the alpha value, has a default value of 0.05 that can be customized as users need.   
 ```{r example glmmTMB}
+library(glmmTMB)
 
 #build model
 start = list(theta = log(c(sqrt(0.008), sqrt(0.07))), betadisp = log(sqrt(0.2)))

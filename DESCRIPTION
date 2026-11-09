@@ -15,7 +15,8 @@ Imports: glmmTMB,
           emmeans,
           lmerTest,
           stringr,
-          lme4
+          lme4,
+          pbkrtest
 License: GPL-3
 Depends: 
     R(>= 4.0.0)
@@ -25,8 +26,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Suggests: 
     testthat (>= 3.0.0),
-    tidyr,
-    pbkrtest
+    tidyr
 Config/testthat/edition: 3
 URL: https://github.com/carlieprinster/glmmpa
 BugReports: https://github.com/carlieprinster/glmmpa/issues

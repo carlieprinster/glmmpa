@@ -7,14 +7,14 @@
 
 <!-- badges: end -->
 
-The goal of glmpa is to approximate power of generalized linear mixed
+The goal of glmpma is to approximate power of generalized linear mixed
 models using the probability distribution method (PDM).
 
 This goal can be achieved using this package, as it includes two
 functions that do this.
 
 These two functions both extract all the components needed to implement
-the PDM for a power approximation of a given fixed effect.  
+the PDM for a power approximation of a given fixed effect.\
 The needed components include a numerator and denominator degrees of
 freedom, a non-centrality parameter, and an F-statistic for the given
 fixed effect.
@@ -42,24 +42,19 @@ distribution method (Geisler 2022).
 
 ## Installation
 
-You can install the development version of glmpa like so:
+You can install the development version of glmmpa by the following:
 
 ``` r
 library("devtools") 
-install_github("carlieprinster/R-Power-Approximation")  
-#> ── R CMD build ─────────────────────────────────────────────────────────────────
-#>       ✔  checking for file 'C:\Users\gapea\AppData\Local\Temp\RtmpUj6ULu\remotes86e444134d15\carlieprinster-R-Power-Approximation-35f9410/DESCRIPTION'
-#>       ─  preparing 'glmpa':
-#>    checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-#>       ─  checking for LF line-endings in source and make files and shell scripts
-#>   ─  checking for empty or unneeded directories
-#>    Omitted 'LazyData' from DESCRIPTION
-#> ─  building 'glmpa_0.1.0.tar.gz'
-#>      
-#> 
+install_github("carlieprinster/glmmpa")  
 library(glmmpa)
-library(glmmTMB)
-library(emmeans)
+```
+
+You can install the CRAN version of glmmpa by the following:
+
+``` r
+install.packages("glmmpa")  
+library(glmmpa)
 ```
 
 ## Example
@@ -98,9 +93,8 @@ that can be customized as users need.
 
 gaussian_example <-  power_blme(Formula = estY ~ NSource*Thatch + (1 | Field) + (1|Field:NSource), 
                                   Varcomp = c(0.008, 0.07), Resid_var = 0.2, Data = ex_gaussian,
-                                  Family = "gaussian", Random_Effects = c("Field", "Field:NSource"), Fixed_Effects =c("NSource", "NSource:Thatch", "Thatch"), Alpha = 0.05)
-#>                     NSource NSource:Thatch    Thatch
-#> Power Approximation       1       0.947531 0.9999965
+                                  Family = "gaussian", Random_Effects = c("Field", "Field:NSource"), Fixed_Effects
+                                =c("NSource", "NSource:Thatch", "Thatch"), Alpha = 0.05)
 ```
 
 # Example for glmmTMB function
@@ -114,6 +108,7 @@ alpha value, has a default value of 0.05 that can be customized as users
 need.
 
 ``` r
+library(glmmTMB)
 
 #build model
 start = list(theta = log(c(sqrt(0.008), sqrt(0.07))), betadisp = log(sqrt(0.2)))
@@ -128,6 +123,4 @@ ex_gaussianmodel <- glmmTMB(estY ~ NSource * Thatch + (1 | Field) + (1 | Field:N
 
 #call function
 gaussian_glmmTMB_example <- power_glmmTMB(ex_gaussianmodel, "NSource:Thatch", 0.05, ex_gaussian)
-#>                     NSource:Thatch
-#> Power Approximation      0.9475087
 ```

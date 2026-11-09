@@ -4,8 +4,7 @@
 #' @importFrom stats qf pf update as.formula anova
 #' @importFrom lme4 glmerControl lmerControl
 #' @import emmeans
-
-#'
+#' @import pbkrtest
 #' @param Formula A model formula.
 #' @param Varcomp Numeric vector of random variance components.
 #' @param Resid_var Residual variance.
